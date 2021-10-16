@@ -1,0 +1,48 @@
+#splitting train and test
+x_train, y_train, x_test, y_test = split_Train_Test_DF(final_features_df, final_target_df)
+
+# this uses the custom function:
+
+#Split final set into training and testing sets
+#splitting training and testing set using sklearn's TimeSeries split
+def split_Train_Test_DF(final_features_df, final_target_df, n_splits=10):
+    """
+    Using sklearn's timeseries split to split the training and testing sets
+    args:
+        final_features_df: features_df after splitting validation set
+        final_target_df: target_df after splitting validation set
+    
+    return: 
+        x_train : traing feature set
+        y_train : training target set
+        x_test : testing feature set
+        y_test : testing target set
+    """
+    ts_split = TimeSeriesSplit(n_splits)
+    for train_index, test_index in ts_split.split(final_features_df):
+        x_train, x_test = final_features_df[:len(train_index)], final_features_df[len(train_index): (len(train_index)+len(test_index))]
+        y_train, y_test = final_target_df[:len(train_index)].values.ravel(), final_target_df[len(train_index): (len(train_index)+len(test_index))].values.ravel()
+        
+    return x_train, y_train, x_test, y_test
+
+# Fancy graph creation uses this:
+
+
+DataSet_Graph()
+
+def DataSet_Graph():
+    """
+    
+    Chart shows 2 different sets(Train,Test,Validation) into single plot
+    Since it is time series data, it shouldnot be mixed 
+    """
+    t=y_test.astype(np.float)
+    v = target_df[-90:-1].values.ravel()
+    plt.figure(figsize = (20,10))
+    plt.plot(y_train, label='trainning_set')
+    plt.plot([None]*len(y_train) + [x for x in t], label='test_set')
+    plt.plot([None]*(len(y_train)+len(t)) + [x for x in v], label='validation_set')
+    plt.xlabel('Days',fontsize = 18)
+    plt.ylabel('Price',fontsize = 18)
+    plt.title('Split dataset into training/validation/test set',fontsize = 20)
+    plt.legend()
