@@ -24,6 +24,7 @@ Here is a graph of those same triggers with the moving averages plotted all on a
 We ran some manual calculations of the RMSE and R2, which were based on the test data set. 
 
 Results:
+
 RMSE_LSTM = 0.280881
 R2_LSTM = 0.051536
 
