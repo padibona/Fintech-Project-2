@@ -12,3 +12,18 @@
 * Trading signals produced when Moving Averages cross these thresholds would generate a portfolio of ~$10K with an initial investment of $3K.
 * Our signals were simply buy when the short crosses over the long moving average and sell when the short crosses below the long moving average.
 * Volume or other inputs were not used in the signals, simply just the cross over points.
+
+Here is a graph showing the portfolio value over time with buy signals in purple and sell signals in yellow:
+
+![alt text](bokeh_plot_portfolio_value.png)
+
+Here is a graph of those same triggers with the moving averages plotted all on a logarithmic scale:
+
+![alt text](Moving_avg_plot.png)
+
+We ran some manual calculations of the RMSE and R2, which were based on the test data set. 
+
+Results:
+RMSE_LSTM = 0.280881
+R2_LSTM = 0.051536
+
