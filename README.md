@@ -1,4 +1,4 @@
-# Fintech-Project-2 - Bitcoin Analysis (BTC)
+# Bitcoin Analysis (BTC)
 ## Background and Motivation
  * Our group had two main goals for this project. 
     * Our first goal was to find out which combination of moving averages       produced the best trading signals and portfolio performance.
